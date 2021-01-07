@@ -6,7 +6,9 @@ I'm also using this project to learn Git and GitHub, so forgive any shenanigans 
 
 As far as I can tell, this is how the process of development with Git goes:
 
-Ctrl+Shift+P --> opens VSCode's (Git?) command line
+```Ctrl``` + ```Shift``` + ```P``` --> opens VSCode's (Git?) command line
+
+```Ctrl``` + ``` ` ```
 
 1. Beginning of Session
 
