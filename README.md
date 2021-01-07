@@ -1,7 +1,8 @@
 # YTDL_Gooey
 Tkinter-based Python GUI for Youtube-DL
 
-I'm using this project to also learn to use Git and GitHub, so forgive any shnanigans occurring in here.
+It's been a while since I've used Python, and I've never used it for something like this.
+I'm also using this project to learn Git and GitHub, so forgive any shenanigans occurring in here.
 
 As far as I can tell, this is how the process of development with Git goes:
 
