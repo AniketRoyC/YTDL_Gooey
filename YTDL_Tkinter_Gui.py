@@ -3,6 +3,10 @@ import youtube_dl
 from tkinter import *
 from tkinter import ttk
 
+ytdl_opts = { 
+    'postprocessors':[{}]
+
+    }
 
 class YTDLGooey:
     def __init__(self, root):
@@ -20,6 +24,10 @@ class YTDLGooey:
         LinkLabel = ttk.Label(frame1, text = 'Video Link:').grid(column=1, row=1, sticky = W)
 
         #Variables
+
+    def ytdl-Options(self, )
+
+
 
 
 root = Tk()
