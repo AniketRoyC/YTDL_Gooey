@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 import youtube_dl
-from dearpygui.core import *
-from dearpygui.simple import *
-
 
 #method for adding lines to keep ouput clean (probably will remove later)
 def separator(seplength=45):
