@@ -3,7 +3,6 @@ import youtube_dl
 from tkinter import *
 from tkinter import ttk
 
-tkinter._test()
 
 class YTDLGooey:
     def __init__(self, root):
