@@ -10,9 +10,9 @@ Ctrl+Shift+P --> opens VSCode's (Git?) command line
 
 1. Beginning of Session
 
-    ```git fetch```
+    ```git pull```
 
-      (or ```git pull``` + ```git merge```) 
+      (or ```git fetch``` + ```git merge```) 
      
       Do this in the branch you're working on
 
