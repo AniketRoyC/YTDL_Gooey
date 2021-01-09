@@ -1,38 +1,6 @@
 # YTDL_Gooey
 Tkinter-based Python GUI for Youtube-DL
 
-It's been a while since I've used Python, and I've never used it for something like this.
-I'm also using this project to learn Git and GitHub, so forgive any shenanigans occurring in here.
+Based on the Youtube DL Python module.
+I could have chosen to make a GUI that passes commands to the ```.exe``` version of the program, but I chose to implement it entirely in Python as a challenge.
 
-As far as I can tell, this is how the process of development with Git goes:
-
-```Ctrl``` + ```Shift``` + ```P```  opens VSCode's (Git?) command line
-
-```Ctrl``` + ``` ` ``` opens the terminal for the branch you're working in
-
-1. Beginning of Session
-
-    ```git pull```
-
-      (or ```git fetch``` + ```git merge```) 
-     
-      Do this in the branch you're working on
-
-2. Actual coding
-
-    do whatever development you're doing (in the branch you're working on)
-
-3. Updating your changes
-
-    ```git add <filename>``` (or hit the "+" on VSCode)
-
-    ```git commit -m "Message you want to include with commit" ``` 
-        (or use the Ctrl+Enter thing in VSCode)
-
-    ```git push```
-
-4. Merging branches
-
-    ```git merge <some other branch>```
-       
-    (merges some other branch with the one you're in)
