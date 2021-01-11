@@ -40,7 +40,7 @@ ytdl_opts = {
     'postprocessors': [{ #names post-processor + keyword arguments for it
         'key': 'FFmpegExtractAudio', #names postprocessor
         'preferredcodec': 'mp3', #self explanatory
-        'preferredquality': '320', #320kbps
+        'preferredquality': '6', #320kbps
         }],
     
     'logger' : MyLogger(), #error logging (method made above) 
