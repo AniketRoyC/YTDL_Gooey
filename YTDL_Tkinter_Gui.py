@@ -3,9 +3,17 @@ import youtube_dl
 from tkinter import *
 from tkinter import ttk
 
+class MyLogger(object):
+    def debug(self, msg):
+        pass
+    def warning(self, msg):
+        pass
+    def error(self, msg):
+        #print(msg) TODO: Add status bar near bottom to display logger
+
 ytdl_opts = { 
     'format':'bestaudio/best',                                  #best available audio format / best overall
-    'outtmpl': userdir + '\\' + 'vibecheck\\%(title)s.%(ext)s', #output location+template
+    'outtmpl': '',#TODO add file location option                #output location+template
     'restrictfilenames': True,                                  #Do not allow "&" and spaces in file names
    
     'postprocessors': [{                                        #names post-processor + keyword arguments for it
