@@ -9,23 +9,36 @@ class MyLogger(object):
     def warning(self, msg):
         pass
     def error(self, msg):
-        #print(msg) TODO: Add status bar near bottom to display logger
+        pass
+        #print(msg) TODO: Add logger functionality
 
-ytdl_opts = { 
+def my_hook(d):
+    if d['status'] == 'finished':
+        print('Downloaded to ' + d['filename'] + '\n Converting...\n')
+        #TODO add a status display (botttom or file-by-file?)
+
+ytdl_opts = {                                                   #dictionary of ytdl options
     'format':'bestaudio/best',                                  #best available audio format / best overall
+    
     'outtmpl': '',#TODO add file location option                #output location+template
+    
     'restrictfilenames': True,                                  #Do not allow "&" and spaces in file names
    
     'postprocessors': [{                                        #names post-processor + keyword arguments for it
+        
         'key': 'FFmpegExtractAudio',                            #names postprocessor
         'preferredcodec': 'mp3',                                #self explanatory
         'preferredquality': '320',                              #320kbps
+        
         }],
     
     'logger' : MyLogger(),                                      #error logging (method made above) 
+    
     'progress_hooks' : [my_hook],                               #progress logging (method made above)
 
     }
+
+#VideoLink = StringVar() #link variable
 
 class YTDLGooey:
     def __init__(self, root):
@@ -41,11 +54,12 @@ class YTDLGooey:
         root.rowconfigure(0, weight=1)
 
         LinkLabel = ttk.Label(frame1, text = 'Video Link:').grid(column=1, row=1, sticky = W)
+        #LinkInput = ttk.Entry(frame1, textvariable = VideoLink)
 
         #Variables
 
     def ytdlOptions(self, opt, optconfig ):
-        pass
+        ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
 
 
 
