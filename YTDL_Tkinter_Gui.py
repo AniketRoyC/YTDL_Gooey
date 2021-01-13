@@ -75,8 +75,8 @@ class YTDLGooey:
 
         #=======================================================================================
         #FRAME2 --> Basic Options 
-        frame2 = ttk.Labelframe(self.root, text = 'Audio Options')
-        frame2.grid(column = 0, row = 2, sticky = (E, W), padding = 5)
+        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = 5)
+        frame2.grid(column = 0, row = 2, sticky = (E, W))
 
         #Audio Format (ComboBox)
         AudFormatLabel = ttk.Label(frame2,
@@ -127,8 +127,8 @@ class YTDLGooey:
 
 
         #FRAME4 --> FilePath ==================================================================
-        frame4 = ttk.LabelFrame(self.root, text = 'File Options')
-        frame4.grid(column = 1, row = 3, padding = 5)
+        frame4 = ttk.LabelFrame(self.root, text = 'File Options', padding = 5)
+        frame4.grid(column = 1, row = 3)
         
         #FileLocation --> DialogBox
 
