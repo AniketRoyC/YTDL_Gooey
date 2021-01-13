@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 import youtube_dl
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog
 
 class MyLogger(object):
     def debug(self, msg):
@@ -49,6 +50,7 @@ class YTDLGooey:
         self.VideoLink = StringVar() #video link 
         self.AudioFormat = StringVar() #Audio format
         self.AudioQuality = StringVar() #Audio Bitrate
+        self.Filepath = StringVar() #Download Location
 
         self.addWidgets() #runs the actual widgets
 
@@ -106,7 +108,8 @@ class YTDLGooey:
 
      
 
-
+    def ChangeFilepath(self):
+        self.Filepath = filedialog.askdirectory()
     
     def ytdlOptions(self, opt, optconfig ):
         ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
