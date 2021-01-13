@@ -55,32 +55,30 @@ class YTDLGooey:
     def addWidgets(self):
         #Basic Window Config
         self.root.title("YTDL Gooey")
-        self.root.columnconfigure(0, minsize=300,  weight=1)
-        self.root.rowconfigure(0, minsize=300, weight=1)
+        self.root.columnconfigure(0,   weight=1) #minsize=200,
+        self.root.rowconfigure(0,  weight=1) #minsize=200,
 
         #FRAME1 --> Contains video link ===============
-        frame1 = ttk.Labelframe(self.root, text = 'Video Information', padding ="3 3 12 12")
-        frame1.grid(column=1, row=1, sticky=(N, W))
+        frame1 = ttk.Labelframe(self.root, text = 'Video Link', padding ="3 3 10 10")
+        frame1.grid(column=0, row=1, sticky=(N, W))
 
         
 
-        frame1['padding'] = (5,10) # Padding: 5px on L/R, 10px on Top/Bott
+        #frame1['padding'] = (5,10) # Padding: 5px on L/R, 10px on Top/Bott
         
       
         #Video Link (Entry)
-        LinkLabel = ttk.Label(frame1, 
-                        text = 'Video Link:').grid(column=1, row=1, sticky = E)
         LinkInput = ttk.Entry(frame1,
                         textvariable = self.VideoLink,
                         width = 75).grid(column=2, row=1, sticky = (E, W))
 
         #FRAME2 --> Basic Options ===============
-        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = '3 3 12 12')
-        frame2.grid(column=1, row=2, sticky = (E, W))
+        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = '3 3 10 10')
+        frame2.grid(column=0, row=2, sticky = (E, W))
 
         #Audio FOrmat (ComboBox)
         AudFormatLabel = ttk.Label(frame2,
-                        text = 'Audio Format:').grid(column=1, row=1, sticky =E)
+                        text = 'Format:').grid(column=1, row=1, sticky =E)
         AudFormat = ttk.Combobox(frame2,
                         textvariable = self.AudioFormat,
                         values = ('best', 'aac', 'flac', 'mp3', 'm4a', 'opus', 'vorbis', 'wav'),
