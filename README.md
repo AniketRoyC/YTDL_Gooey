@@ -9,3 +9,10 @@ This was more of a challenge than I thought. I basically know nothing about this
 
 13-Jan-21
 Finally got some quality development time in today. Got the basics going. For now, I'll keep going at the GUI part of things, and leave the YTDL part of it for later. Shouldn't be too complicated (refer to ```ytdl-import-testing.py``` for more info)
+
+Conventions:
+Padding
+    Frames/LabelFrames (i.e frame1, frame2, etc) = 5px
+        Everything within numbered frames = 3px 
+
+SPACE = SPACE for everything with an equals sign
