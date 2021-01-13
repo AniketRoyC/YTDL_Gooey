@@ -18,7 +18,7 @@ def my_hook(d):
         #TODO add a status display (botttom or file-by-file?)
 
 ytdl_opts = {                                                   #dictionary of ytdl options (defaults are included here)
-    'format':'bestaudio/best',                                  #best available audio format / best overall
+    'format':'mp3',                                  #best available audio format / best overall
     
     'outtmpl': '',#TODO add file location option                #output location+template
     
@@ -53,30 +53,41 @@ class YTDLGooey:
 
 
     def addWidgets(self):
-        #Window Title
+        #Basic Window Config
         self.root.title("YTDL Gooey")
-
-        #FRAME1 --> Will contain all the video information
-        frame1 = ttk.Labelframe(self.root, text = 'Video Information', padding ="3 3 12 12")
-        frame1.grid(column=0, row=0, sticky=(N, W, E, S))
-
         self.root.columnconfigure(0, minsize=300,  weight=1)
         self.root.rowconfigure(0, minsize=300, weight=1)
+
+        #FRAME1 --> Contains video link ===============
+        frame1 = ttk.Labelframe(self.root, text = 'Video Information', padding ="3 3 12 12")
+        frame1.grid(column=1, row=1, sticky=(N, W))
+
+        
 
         frame1['padding'] = (5,10) # Padding: 5px on L/R, 10px on Top/Bott
         
       
-
+        #Video Link (Entry)
         LinkLabel = ttk.Label(frame1, 
                         text = 'Video Link:').grid(column=1, row=1, sticky = E)
-
-        #Video Link (Entry)
         LinkInput = ttk.Entry(frame1,
                         textvariable = self.VideoLink,
                         width = 75).grid(column=2, row=1, sticky = (E, W))
 
+        #FRAME2 --> Basic Options ===============
+        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = '3 3 12 12')
+        frame2.grid(column=1, row=2, sticky = (E, W))
+
+        #Audio FOrmat (ComboBox)
+        AudFormatLabel = ttk.Label(frame2,
+                        text = 'Audio Format:').grid(column=1, row=1, sticky =E)
+        AudFormat = ttk.Combobox(frame2,
+                        textvariable = self.AudioFormat,
+                        values = ('best', 'aac', 'flac', 'mp3', 'm4a', 'opus', 'vorbis', 'wav'),
+                        width = 15).grid(column=2, row=1, sticky = (E,W))
         #Download Playlist (Checkbox)
         #PlaylistToggle = ttk.Radiobutton
+        
 
      
 
