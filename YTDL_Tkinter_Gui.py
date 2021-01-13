@@ -94,6 +94,7 @@ class YTDLGooey:
         #Audio Quality (Entry)
         AudQualityLabel = ttk.Label(frame2,
                                 text = "Quality:",
+                                width = 8,
                                 padding = 3)
         AudQualityLabel.grid(column = 2, row = 1, sticky = (E,W))
 
@@ -102,10 +103,16 @@ class YTDLGooey:
                             width = 5)
         AudQuality.grid(column = 3, row = 1, sticky = (E,W))
 
-        AudOptionsNotice = ttk.Label(frame2,
-                            text = '(For more information on Audio Options, see Instructions)')
-        AudOptionsNotice.grid(column = 1, row = 2)    
-        AudOptionsNotice['font'] = 'TkSmallCaptionFont'
+        #FRAME3 --> Notice to look in instructions for additional information===================
+        #TODO add button to open instructions window
+        frame3 = ttk.Frame(self.root, padding = 5)
+        frame3.grid(column = 0, row = 3, sticky = (E, W))
+
+        #Options Notice
+        OptionsNotice = ttk.Label(frame3,
+                            text = '(For more information/instructions, refer to Help)')
+        OptionsNotice.grid(column = 0, row = 0)    
+        OptionsNotice['font'] = 'TkSmallCaptionFont'
 
 
         #=======================================================================================
