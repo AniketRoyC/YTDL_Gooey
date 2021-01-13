@@ -63,7 +63,7 @@ class YTDLGooey:
 
         #=======================================================================================
         #FRAME1 --> Contains video link ===============
-        frame1 = ttk.Labelframe(self.root, text = 'Video Link', padding = 3)
+        frame1 = ttk.Labelframe(self.root, text = 'Video Link', padding = 5)
         frame1.grid(column = 0, row = 1, sticky = (N, W))
 
         #Video Link (Entry)
@@ -75,32 +75,39 @@ class YTDLGooey:
 
         #=======================================================================================
         #FRAME2 --> Basic Options 
-        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding=3)
+        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = 5)
         frame2.grid(column = 0, row = 2, sticky = (E, W))
 
         #Audio Format (ComboBox)
         AudFormatLabel = ttk.Label(frame2,
                         text = 'File format:',
                         padding = 3)
-        AudFormatLabel.grid(column = 1, row = 1, sticky = E)
+        AudFormatLabel.grid(column = 0, row = 1, sticky = E)
         
         AudFormat = ttk.Combobox(frame2,
                         textvariable = self.AudioFormat,
                         values = ('best', 'aac', 'flac', 'mp3', 'm4a', 'opus', 'vorbis', 'wav'),
                         width = 8)
-        AudFormat.grid(column = 2, row = 1, sticky = (E,W))
+        AudFormat.grid(column = 1, row = 1, sticky = (E,W))
 
 
         #Audio Quality (Entry)
         AudQualityLabel = ttk.Label(frame2,
                                 text = "Quality:",
                                 padding = 3)
-        AudQualityLabel.grid(column = 3, row = 1, sticky = (E,W))
+        AudQualityLabel.grid(column = 2, row = 1, sticky = (E,W))
+
         AudQuality = ttk.Entry(frame2,
                             textvariable = self.AudioQuality,
                             width = 5)
-        AudQuality.grid(column = 4, row = 1, sticky = (E,W))
-        
+        AudQuality.grid(column = 3, row = 1, sticky = (E,W))
+
+        AudOptionsNotice = ttk.Label(frame2,
+                            text = '(For more information on Audio Options, see Instructions)')
+        AudOptionsNotice.grid(column = 1, row = 2)    
+        AudOptionsNotice['font'] = 'TkSmallCaptionFont'
+
+
         #=======================================================================================
         #Download Playlist (Checkbox)
         #PlaylistToggle = ttk.Radiobutton
