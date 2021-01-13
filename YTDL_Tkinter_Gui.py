@@ -38,10 +38,14 @@ ytdl_opts = {                                                   #dictionary of y
 
     }
 
-#VideoLink = StringVar() #link variable
+
 
 class YTDLGooey:
     def __init__(self, root):
+
+        VideoLink = StringVar() #video link variable
+
+
 
         #Window Title
         root.title("YTDL Gooey")
@@ -50,11 +54,20 @@ class YTDLGooey:
             #the actual link, playlist yes/no
         frame1 = ttk.Labelframe(root, text = 'Video Information', padding ="3 3 12 12")
         frame1.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
+        root.columnconfigure(0, minsize=300,  weight=1)
+        root.rowconfigure(0, minsize=300, weight=1)
+        frame1['padding'] = (5,10) # Padding: 5px on L/R, 10px on Top/Bott
+        
+        #Not sure what these two are actually doing
+        #frame1['width'] = 300
+        #frame1['height'] = 300 
 
-        LinkLabel = ttk.Label(frame1, text = 'Video Link:').grid(column=1, row=1, sticky = W)
-        #LinkInput = ttk.Entry(frame1, textvariable = VideoLink)
+        LinkLabel = ttk.Label(frame1, 
+                        text = 'Video Link:').grid(column=1, row=1, sticky = E)
+
+        LinkInput = ttk.Entry(frame1,
+                        textvariable = VideoLink,
+                        width = 100).grid(column=2, row=1, sticky = (E, W))
 
         #Variables
 
