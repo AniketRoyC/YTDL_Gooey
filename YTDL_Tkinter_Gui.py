@@ -17,7 +17,7 @@ def my_hook(d):
         print('Downloaded to ' + d['filename'] + '\n Converting...\n')
         #TODO add a status display (botttom or file-by-file?)
 
-ytdl_opts = {                                                   #dictionary of ytdl options
+ytdl_opts = {                                                   #dictionary of ytdl options (defaults are included here)
     'format':'bestaudio/best',                                  #best available audio format / best overall
     
     'outtmpl': '',#TODO add file location option                #output location+template
@@ -41,48 +41,56 @@ ytdl_opts = {                                                   #dictionary of y
 
 
 class YTDLGooey:
-    def __init__(self, root):
-        #Variables
-        VideoLink = StringVar() #video link variable
+    def __init__(self):
 
-    
-    def GooeyGUI(self, root):
-        
+        self.root = Tk()
+
+        #Variables
+        self.VideoLink = StringVar() #video link 
+        self.AudioFormat = StringVar() #Audio format
+
+        self.addWidgets() #runs the actual widgets
+
+
+    def addWidgets(self):
         #Window Title
-        root.title("YTDL Gooey")
+        self.root.title("YTDL Gooey")
 
         #FRAME1 --> Will contain all the video information
-            #Extract Audio (Checkbox)
-        frame1 = ttk.Labelframe(root, text = 'Video Information', padding ="3 3 12 12")
+        frame1 = ttk.Labelframe(self.root, text = 'Video Information', padding ="3 3 12 12")
         frame1.grid(column=0, row=0, sticky=(N, W, E, S))
-        root.columnconfigure(0, minsize=300,  weight=1)
-        root.rowconfigure(0, minsize=300, weight=1)
+
+        self.root.columnconfigure(0, minsize=300,  weight=1)
+        self.root.rowconfigure(0, minsize=300, weight=1)
+
         frame1['padding'] = (5,10) # Padding: 5px on L/R, 10px on Top/Bott
         
-        #Not sure what these two are actually doing
-        #frame1['width'] = 300
-        #frame1['height'] = 300 
+      
 
         LinkLabel = ttk.Label(frame1, 
                         text = 'Video Link:').grid(column=1, row=1, sticky = E)
 
         #Video Link (Entry)
         LinkInput = ttk.Entry(frame1,
-                        textvariable = VideoLink,
+                        textvariable = self.VideoLink,
                         width = 75).grid(column=2, row=1, sticky = (E, W))
 
         #Download Playlist (Checkbox)
         #PlaylistToggle = ttk.Radiobutton
-        
+
+     
 
 
+    
     def ytdlOptions(self, opt, optconfig ):
         ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
 
+    def runGooey(self):
+        self.root.mainloop()
 
 
 
-root = Tk()
-YTDLGooey.GooeyGUI(root)
-root.mainloop()
+window = YTDLGooey()
+window.runGooey()
+
 
