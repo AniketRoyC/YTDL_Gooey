@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 import youtube_dl
+import os
 from tkinter import *
 from tkinter import ttk
 from tkinter import filedialog
@@ -51,6 +52,8 @@ class YTDLGooey:
         self.AudioFormat = StringVar() #Audio format
         self.AudioQuality = StringVar() #Audio Bitrate
         self.Filepath = StringVar() #Download Location
+
+        self.Filepath = os.getcwd() #sets filepath to 'current working directory'
 
         self.addWidgets() #runs the actual widgets
 
@@ -122,15 +125,23 @@ class YTDLGooey:
         #Apply Button - Updates all values for the ytdl_opts dictionary. Also checks for invalid entries
         ApplyButton = ttk.Button(frame3,
                         text = "Apply",
-                        command = YTDLGooey.ytdlOptions)
+                        command = self.ytdlOptions)
         ApplyButton.grid(column = 2, row = 0)
 
 
         #FRAME4 --> FilePath ==================================================================
         frame4 = ttk.LabelFrame(self.root, text = 'File Options', padding = 5)
-        frame4.grid(column = 1, row = 3)
+        frame4.grid(column = 0, row = 3, sticky = W)
         
         #FileLocation --> DialogBox
+        FileLocDisp = ttk.Label(frame4,
+                                text = self.Filepath)
+        FileLocDisp.grid(column = 0, row = 0, sticky = W)
+
+        FileLocButton = ttk.Button(frame4,
+                            text = 'Add',
+                            command = self.ChangeFilepath)
+        FileLocButton.grid(column = 1, row = 0)                            
 
         #======================================================================================
         #Download Playlist (Checkbox)
@@ -138,11 +149,13 @@ class YTDLGooey:
         
              
     def ChangeFilepath(self):
-        self.Filepath = filedialog.askdirectory()
+        Filepath = (filedialog.askdirectory())
+        print(Filepath)
+        
     
-    def ytdlOptions(opt = '', optconfig = '' ):
+    def ytdlOptions(opt = 'bruh', optconfig = 'moment' ):
         #ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
-        print(opt + optconfig)
+        print('bruh moment')
 
     def runGooey(self):
         self.root.mainloop()
