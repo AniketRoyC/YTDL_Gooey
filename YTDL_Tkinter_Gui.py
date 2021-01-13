@@ -42,16 +42,17 @@ ytdl_opts = {                                                   #dictionary of y
 
 class YTDLGooey:
     def __init__(self, root):
-
+        #Variables
         VideoLink = StringVar() #video link variable
 
-
-
+    
+    def GooeyGUI(self, root):
+        
         #Window Title
         root.title("YTDL Gooey")
 
         #FRAME1 --> Will contain all the video information
-            #the actual link, playlist yes/no
+            #Extract Audio (Checkbox)
         frame1 = ttk.Labelframe(root, text = 'Video Information', padding ="3 3 12 12")
         frame1.grid(column=0, row=0, sticky=(N, W, E, S))
         root.columnconfigure(0, minsize=300,  weight=1)
@@ -65,11 +66,15 @@ class YTDLGooey:
         LinkLabel = ttk.Label(frame1, 
                         text = 'Video Link:').grid(column=1, row=1, sticky = E)
 
+        #Video Link (Entry)
         LinkInput = ttk.Entry(frame1,
                         textvariable = VideoLink,
-                        width = 100).grid(column=2, row=1, sticky = (E, W))
+                        width = 75).grid(column=2, row=1, sticky = (E, W))
 
-        #Variables
+        #Download Playlist (Checkbox)
+        #PlaylistToggle = ttk.Radiobutton
+        
+
 
     def ytdlOptions(self, opt, optconfig ):
         ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
@@ -78,6 +83,6 @@ class YTDLGooey:
 
 
 root = Tk()
-YTDLGooey(root)
+YTDLGooey.GooeyGUI(root)
 root.mainloop()
 
