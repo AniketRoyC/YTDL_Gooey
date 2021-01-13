@@ -75,8 +75,8 @@ class YTDLGooey:
 
         #=======================================================================================
         #FRAME2 --> Basic Options 
-        frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = 5)
-        frame2.grid(column = 0, row = 2, sticky = (E, W))
+        frame2 = ttk.Labelframe(self.root, text = 'Audio Options')
+        frame2.grid(column = 0, row = 2, sticky = (E, W), padding = 5)
 
         #Audio Format (ComboBox)
         AudFormatLabel = ttk.Label(frame2,
@@ -103,10 +103,10 @@ class YTDLGooey:
                             width = 5)
         AudQuality.grid(column = 3, row = 1, sticky = (E,W))
 
-        #FRAME3 --> Notice to look in instructions for additional information===================
+        #FRAME3 --> Help notice, Apply/Run Buttons  (Always at the bottom) ====================
         #TODO add button to open instructions window
         frame3 = ttk.Frame(self.root, padding = 5)
-        frame3.grid(column = 0, row = 3, sticky = (E, W))
+        frame3.grid(column = 0, row = 4, sticky = (E, W))
 
         #Options Notice
         OptionsNotice = ttk.Label(frame3,
@@ -114,22 +114,41 @@ class YTDLGooey:
         OptionsNotice.grid(column = 0, row = 0)    
         OptionsNotice['font'] = 'TkSmallCaptionFont'
 
+        #Separator - b/w Options Notice and Apply Button
+        s_frame3 = ttk.Separator(frame3,
+                            orient = VERTICAL)
+        s_frame3.grid(column = 1, row = 0, rowspan = 1, sticky = 'ns', padx = 5)
 
-        #=======================================================================================
+        #Apply Button - Updates all values for the ytdl_opts dictionary. Also checks for invalid entries
+        ApplyButton = ttk.Button(frame3,
+                        text = "Apply",
+                        command = YTDLGooey.ytdlOptions)
+        ApplyButton.grid(column = 2, row = 0)
+
+
+        #FRAME4 --> FilePath ==================================================================
+        frame4 = ttk.LabelFrame(self.root, text = 'File Options')
+        frame4.grid(column = 1, row = 3, padding = 5)
+        
+        #FileLocation --> DialogBox
+
+        #======================================================================================
         #Download Playlist (Checkbox)
         #PlaylistToggle = ttk.Radiobutton
         
-
-     
-
+             
     def ChangeFilepath(self):
         self.Filepath = filedialog.askdirectory()
     
-    def ytdlOptions(self, opt, optconfig ):
-        ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
+    def ytdlOptions(opt = '', optconfig = '' ):
+        #ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
+        print(opt + optconfig)
 
     def runGooey(self):
         self.root.mainloop()
+
+    def Download():
+        pass
 
 
 
