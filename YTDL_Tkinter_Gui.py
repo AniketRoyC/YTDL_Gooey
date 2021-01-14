@@ -46,40 +46,48 @@ class YTDLGooey:
     def __init__(self):
 
         self.root = Tk()
+        self.root.minsize(375, 375)
 
         #Variables
         self.VideoLink = StringVar() #video link 
         self.AudioFormat = StringVar() #Audio format
         self.AudioQuality = StringVar() #Audio Bitrate
-        self.Filepath = StringVar() #Download Location
-
-        self.Filepath = os.getcwd() #sets filepath to 'current working directory'
+        self.Filepath = StringVar(name = os.getcwd()) #Default download Location
 
         self.addWidgets() #runs the actual widgets
 
 
+
+ 
     def addWidgets(self):
         #Basic Window Config
         self.root.title("YTDL Gooey")
-        self.root.columnconfigure(0, weight = 1) #minsize=200,
-        self.root.rowconfigure(0, weight = 1) #minsize=200,
+        self.root.columnconfigure(0, weight = 1)
+        self.root.rowconfigure(0, weight = 1)
 
         #=======================================================================================
         #FRAME1 --> Contains video link ===============
         frame1 = ttk.Labelframe(self.root, text = 'Video Link', padding = 5)
-        frame1.grid(column = 0, row = 1, sticky = (N, W))
+        frame1.grid(column = 0, row = 1, sticky = (N, E, W))
+       
+        frame1.columnconfigure(0, weight = 1)
 
         #Video Link (Entry)
         LinkInput = ttk.Entry(frame1,
                         textvariable = self.VideoLink,
-                        width = 75)
-        LinkInput.grid(column = 2, row = 1, sticky = (E, W))
+                        width = 55)
+        LinkInput.grid(column = 0, row = 1, sticky = (E, W))
 
 
         #=======================================================================================
         #FRAME2 --> Basic Options 
         frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = 5)
         frame2.grid(column = 0, row = 2, sticky = (E, W))
+        
+        frame2.columnconfigure(0, weight = 0)
+        frame2.columnconfigure(1, weight = 1)
+        frame2.columnconfigure(2, weight = 0)
+        frame2.columnconfigure(3, weight = 1)
 
         #Audio Format (ComboBox)
         AudFormatLabel = ttk.Label(frame2,
@@ -97,19 +105,22 @@ class YTDLGooey:
         #Audio Quality (Entry)
         AudQualityLabel = ttk.Label(frame2,
                                 text = "Quality:",
-                                width = 8,
                                 padding = 3)
         AudQualityLabel.grid(column = 2, row = 1, sticky = (E,W))
 
         AudQuality = ttk.Entry(frame2,
                             textvariable = self.AudioQuality,
-                            width = 5)
-        AudQuality.grid(column = 3, row = 1, sticky = (E,W))
+                            width = 8)
+        AudQuality.grid(column = 3, row = 1, sticky = (E,W), padx = 3, pady = 3)
 
         #FRAME3 --> Help notice, Apply/Run Buttons  (Always at the bottom) ====================
         #TODO add button to open instructions window
         frame3 = ttk.Frame(self.root, padding = 5)
         frame3.grid(column = 0, row = 4, sticky = (E, W))
+        
+        frame3.columnconfigure(0, weight = 1)
+        frame3.columnconfigure(1, weight = 1)
+        frame3.columnconfigure(2, weight = 1)
 
         #Options Notice
         OptionsNotice = ttk.Label(frame3,
@@ -126,36 +137,49 @@ class YTDLGooey:
         ApplyButton = ttk.Button(frame3,
                         text = "Apply",
                         command = self.ytdlOptions)
-        ApplyButton.grid(column = 2, row = 0)
+        ApplyButton.grid(column = 2, row = 0, sticky = E)
 
 
         #FRAME4 --> FilePath ==================================================================
         frame4 = ttk.LabelFrame(self.root, text = 'File Options', padding = 5)
-        frame4.grid(column = 0, row = 3, sticky = W)
+        frame4.grid(column = 0, row = 3, sticky = (W, E))
+       
+        frame4.columnconfigure(0, weight = 1)
+        
+        
         
         #FileLocation --> DialogBox
-        FileLocDisp = ttk.Label(frame4,
-                                text = self.Filepath)
-        FileLocDisp.grid(column = 0, row = 0, sticky = W)
+        FileLocDisp = ttk.Entry(frame4,
+                                textvariable = self.Filepath,
+                                width = 55)
+        FileLocDisp.grid(column = 0, row = 0, sticky = (W,E), padx = 3, pady = 3)
 
         FileLocButton = ttk.Button(frame4,
-                            text = 'Add',
+                            text = 'Change',
                             command = self.ChangeFilepath)
-        FileLocButton.grid(column = 1, row = 0)                            
+        FileLocButton.grid(column = 1, row = 0, sticky = E)                            
 
         #======================================================================================
         #Download Playlist (Checkbox)
         #PlaylistToggle = ttk.Radiobutton
         
+    
              
     def ChangeFilepath(self):
-        Filepath = (filedialog.askdirectory())
-        print(Filepath)
+        
+        bruh = ''
+        bruh = (filedialog.askdirectory())
+
+        self.Filepath.set(bruh)
+        
+        
+        print(bruh)
+        print(self.Filepath)
         
     
     def ytdlOptions(opt = 'bruh', optconfig = 'moment' ):
         #ytdl_opts['opt'] = optconfig    #replaces 'opt' with the optconfig in the dictionary
-        print('bruh moment')
+        pass
 
     def runGooey(self):
         self.root.mainloop()
