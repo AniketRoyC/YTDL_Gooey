@@ -52,7 +52,10 @@ class YTDLGooey:
         self.VideoLink = StringVar() #video link 
         self.AudioFormat = StringVar() #Audio format
         self.AudioQuality = StringVar() #Audio Bitrate
-        self.Filepath = StringVar(name = os.getcwd()) #Default download Location
+
+        self.Filepath = StringVar(value = os.getcwd()) #Default download Location
+        print('constructor check')
+        print(self.Filepath.get())
 
         self.addWidgets() #runs the actual widgets
 
@@ -82,7 +85,7 @@ class YTDLGooey:
         #=======================================================================================
         #FRAME2 --> Basic Options 
         frame2 = ttk.Labelframe(self.root, text = 'Audio Options', padding = 5)
-        frame2.grid(column = 0, row = 2, sticky = (E, W))
+        frame2.grid(column = 0, row = 2, sticky = (N, E, W))
         
         frame2.columnconfigure(0, weight = 0)
         frame2.columnconfigure(1, weight = 1)
@@ -116,7 +119,7 @@ class YTDLGooey:
         #FRAME3 --> Help notice, Apply/Run Buttons  (Always at the bottom) ====================
         #TODO add button to open instructions window
         frame3 = ttk.Frame(self.root, padding = 5)
-        frame3.grid(column = 0, row = 4, sticky = (E, W))
+        frame3.grid(column = 0, row = 4, sticky = (N, E, W))
         
         frame3.columnconfigure(0, weight = 1)
         frame3.columnconfigure(1, weight = 1)
@@ -142,22 +145,24 @@ class YTDLGooey:
 
         #FRAME4 --> FilePath ==================================================================
         frame4 = ttk.LabelFrame(self.root, text = 'File Options', padding = 5)
-        frame4.grid(column = 0, row = 3, sticky = (W, E))
+        frame4.grid(column = 0, row = 3, sticky = (N, W, E))
        
         frame4.columnconfigure(0, weight = 1)
         
-        
+        FileLocLabel = ttk.Label(frame4,
+                            text = 'Save Location:')
+        FileLocLabel.grid(column = 0, row = 0, sticky = W)
         
         #FileLocation --> DialogBox
         FileLocDisp = ttk.Entry(frame4,
                                 textvariable = self.Filepath,
                                 width = 55)
-        FileLocDisp.grid(column = 0, row = 0, sticky = (W,E), padx = 3, pady = 3)
+        FileLocDisp.grid(column = 0, row = 1, sticky = (W,E), padx = 3, pady = 3)
 
         FileLocButton = ttk.Button(frame4,
                             text = 'Change',
                             command = self.ChangeFilepath)
-        FileLocButton.grid(column = 1, row = 0, sticky = E)                            
+        FileLocButton.grid(column = 1, row = 1, sticky = E)                            
 
         #======================================================================================
         #Download Playlist (Checkbox)
@@ -167,14 +172,15 @@ class YTDLGooey:
              
     def ChangeFilepath(self):
         
-        bruh = ''
-        bruh = (filedialog.askdirectory())
+        # bruh = ''
+        # bruh = (filedialog.askdirectory())
 
-        self.Filepath.set(bruh)
+        self.Filepath.set(filedialog.askdirectory())
         
         
-        print(bruh)
-        print(self.Filepath)
+        # print(bruh)
+        print('Change Directory Check')
+        print(self.Filepath.get())
         
     
     def ytdlOptions(opt = 'bruh', optconfig = 'moment' ):
