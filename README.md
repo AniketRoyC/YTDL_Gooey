@@ -21,6 +21,7 @@ For some godforsaken reason, having the Filepath display as a ```Label``` just c
 I guess you can enter filenames manually now too if you want, as a consequencey of the entry.
 
 **28-Sep-2021**
+
 Long time no see. Spring 2021 got pretty hectic, and I haven't touched this code since mid-January. Hopefully, I'm going to get this project back on track, if for no other reason than to finish what I started. Expect small updates/additions throughout the Fall 2021 semester.
 
 ## Conventions
