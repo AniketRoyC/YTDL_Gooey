@@ -20,6 +20,9 @@ Part 2: (```StringVar``` machine broke B)
 For some godforsaken reason, having the Filepath display as a ```Label``` just completely refused to function. Changed it to an ```Entry```, and the exact same code worked perfectly. If someone reads this in the future and knows why, please tell me. I wasted 20% of today's coding time on this.
 I guess you can enter filenames manually now too if you want, as a consequencey of the entry.
 
+**28-Sep-2021**
+Long time no see. Spring 2021 got pretty hectic, and I haven't touched this code since mid-January. Hopefully, I'm going to get this project back on track, if for no other reason than to finish what I started. Expect small updates/additions throughout the Fall 2021 semester.
+
 ## Conventions
 
 Padding - add it to the ```.grid``` command
